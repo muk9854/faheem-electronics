@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c2420"/>
+      <stop offset="1" stop-color="#0a0e13"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.75" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="rgba(255,184,0,0.28)"/>
+      <stop offset="1" stop-color="rgba(255,184,0,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <rect x="60" y="60" width="680" height="480" rx="24" fill="rgba(10,14,19,0.55)" stroke="rgba(255,184,0,0.25)" stroke-width="2"/>
+  <rect x="92" y="92" width="616" height="416" rx="14" fill="rgba(10,14,19,0.4)" stroke="rgba(255,255,255,0.08)"/>
+  <g>
+    <path d="M170 440 L258 440 L258 408 L392 408 L392 440 L480 440 L480 412 L392 412 L392 376 L258 376 L258 412 L170 412 Z" fill="none" stroke="#ffb800" stroke-width="3" opacity="0.35"/>
+    <path d="M480 440 L630 440 L630 380 L480 380 Z" fill="none" stroke="#ffb800" stroke-width="3" opacity="0.35"/>
+    <path d="M170 440 L250 440 L250 300 L170 300 Z" fill="none" stroke="#ffb800" stroke-width="3" opacity="0.35"/>
+  </g>
+  <circle cx="400" cy="290" r="52" fill="#ffb800" opacity="0.16"/>
+  <circle cx="400" cy="290" r="52" fill="none" stroke="#ffb800" stroke-width="3"/>
+  <path d="M400 222 L424 262 L412 262 L416 358 L376 306 L390 306 L382 222 Z" fill="#ffb800"/>
+  <g stroke="#ffb800" stroke-width="3" stroke-linecap="round" opacity="0.85">
+    <line x1="400" y1="214" x2="400" y2="198"/>
+    <line x1="400" y1="366" x2="400" y2="382"/>
+    <line x1="342" y1="290" x2="326" y2="290"/>
+    <line x1="458" y1="290" x2="474" y2="290"/>
+    <line x1="359" y1="249" x2="348" y2="238"/>
+    <line x1="441" y1="331" x2="452" y2="342"/>
+    <line x1="441" y1="249" x2="452" y2="238"/>
+    <line x1="359" y1="331" x2="348" y2="342"/>
+  </g>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="26" letter-spacing="6" fill="rgba(255,184,0,0.9)">FAHEEM ELECTRONICS SOLAR</text>
+  <text x="400" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="#e9eef4">Solar showroom & office</text>
+  <text x="400" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#96a3b1">Faheem Electronics Solar &middot; placeholder image</text>
+</svg>
