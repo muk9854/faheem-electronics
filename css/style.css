@@ -388,6 +388,13 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 
+.hero-inner > *,
+.about-grid > *,
+.contact-grid > *,
+.footer-top > * {
+  min-width: 0;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -426,7 +433,6 @@ h1, h2, h3, h4 {
 .hero h1 .accent {
   color: var(--accent);
   position: relative;
-  white-space: nowrap;
 }
 
 .hero h1 .accent::after {
@@ -1674,6 +1680,87 @@ h1, h2, h3, h4 {
 
   .page-hero {
     padding-top: calc(var(--header-h) + 40px);
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .section-head {
+    margin-bottom: 36px;
+  }
+
+  .logo {
+    font-size: 13px;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .logo-mark svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .logo small {
+    font-size: 8px;
+    letter-spacing: 0.24em;
+  }
+
+  .header-phone {
+    padding: 10px 11px;
+  }
+
+  .header-phone svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--accent);
+  }
+
+  .header-phone span {
+    display: none;
+  }
+
+  .hero h1 .accent::after {
+    display: none;
+  }
+
+  .hero-panel {
+    padding: 28px 22px;
+  }
+
+  .brand-chip {
+    font-size: 10px;
+    padding: 11px 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-actions .btn,
+  .cta-actions .btn {
+    width: 100%;
+  }
+
+  .form-wrap {
+    padding: 24px 20px;
+  }
+
+  .toast {
+    width: min(92%, 420px);
+  }
+
+  .lightbox {
+    padding: 16px;
+  }
+
+  .map-wrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero {
+    padding-top: calc(var(--header-h) + 44px);
   }
 }
 
