@@ -30,12 +30,8 @@
     <line x1="400" y1="366" x2="400" y2="382"/>
     <line x1="342" y1="290" x2="326" y2="290"/>
     <line x1="458" y1="290" x2="474" y2="290"/>
-    <line x1="359" y1="249" x2="348" y2="238"/>
-    <line x1="441" y1="331" x2="452" y2="342"/>
-    <line x1="441" y1="249" x2="452" y2="238"/>
-    <line x1="359" y1="331" x2="348" y2="342"/>
   </g>
-  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="26" letter-spacing="6" fill="#f05a27">ROOFTOP SOLAR</text>
-  <text x="400" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="#1a1d21">Rooftop Installations</text>
-  <text x="400" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#5f6b76">Faheem Electronics Solar &middot; placeholder image</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="24" letter-spacing="6" fill="#f05a27">SOLAR WATER PUMPS</text>
+  <text x="400" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="30" fill="#1a1d21">0.5HP to 20HP pump</text>
+  <text x="400" y="562" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#5f6b76">Faheem Electronics Solar · placeholder image</text>
 </svg>
