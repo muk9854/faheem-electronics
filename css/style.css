@@ -3,22 +3,22 @@
    ============================================================ */
 
 :root {
-  --bg: #0a0e13;
-  --bg-2: #0f151d;
-  --card: #131a23;
-  --card-2: #17202b;
-  --border: rgba(255, 255, 255, 0.08);
+  --bg: #f6f8fa;
+  --bg-2: #eef1f4;
+  --card: #ffffff;
+  --card-2: #fafbfc;
+  --border: rgba(13, 17, 22, 0.09);
   --border-strong: rgba(240, 90, 39, 0.4);
-  --text: #e9eef4;
-  --muted: #96a3b1;
+  --text: #1a1d21;
+  --muted: #5f6b76;
   --accent: #f05a27;
-  --accent-soft: rgba(240, 90, 39, 0.13);
-  --accent-2: #ffb08a;
+  --accent-soft: rgba(240, 90, 39, 0.1);
+  --accent-2: #d94718;
   --green: #37d67a;
   --danger: #ff5c5c;
   --radius: 16px;
   --radius-sm: 10px;
-  --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --shadow: 0 20px 50px rgba(15, 23, 32, 0.1);
   --font-display: "Unbounded", "Trebuchet MS", sans-serif;
   --font-body: "Manrope", "Segoe UI", sans-serif;
   --maxw: 1180px;
@@ -66,7 +66,7 @@ button {
 
 ::selection {
   background: var(--accent);
-  color: #0a0e13;
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar {
@@ -76,7 +76,7 @@ button {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #26313d;
+  background: #c9d2da;
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -91,7 +91,7 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(900px 500px at 85% -5%, rgba(240, 90, 39, 0.09), transparent 60%),
+    radial-gradient(900px 500px at 85% -5%, rgba(240, 90, 39, 0.08), transparent 60%),
     radial-gradient(700px 500px at -10% 30%, rgba(240, 90, 39, 0.05), transparent 60%),
     var(--bg);
 }
@@ -104,8 +104,8 @@ body::after {
   pointer-events: none;
   opacity: 0.05;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+    linear-gradient(rgba(11, 15, 20, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 15, 20, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 75%);
 }
@@ -187,11 +187,11 @@ h1, h2, h3, h4 {
 }
 
 .header.scrolled {
-  background: rgba(10, 14, 19, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 30px rgba(15, 23, 32, 0.08);
 }
 
 .header-inner {
@@ -226,7 +226,7 @@ h1, h2, h3, h4 {
 .logo-mark svg {
   width: 22px;
   height: 22px;
-  fill: #0a0e13;
+  fill: #ffffff;
 }
 
 .logo small {
@@ -347,7 +347,7 @@ h1, h2, h3, h4 {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), #ff8a3d);
-  color: #0a0e13;
+  color: #ffffff;
   box-shadow: 0 8px 24px rgba(240, 90, 39, 0.3);
 }
 
@@ -479,7 +479,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-stats .stat {
-  background: var(--bg-2);
+  background: var(--card);
   padding: 22px 20px;
 }
 
@@ -504,7 +504,7 @@ h1, h2, h3, h4 {
   border-radius: 24px;
   padding: 40px 36px;
   background:
-    linear-gradient(160deg, rgba(240, 90, 39, 0.12), transparent 45%),
+    linear-gradient(160deg, rgba(240, 90, 39, 0.08), transparent 45%),
     var(--card);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
@@ -548,7 +548,7 @@ h1, h2, h3, h4 {
 
 .brand-chip {
   border: 1px solid var(--border);
-  background: var(--bg-2);
+  background: #ffffff;
   border-radius: var(--radius-sm);
   padding: 14px 10px;
   text-align: center;
@@ -569,7 +569,7 @@ h1, h2, h3, h4 {
   position: absolute;
   right: -14px;
   top: -18px;
-  background: var(--card-2);
+  background: #ffffff;
   border: 1px solid var(--border-strong);
   border-radius: 14px;
   padding: 14px 18px;
@@ -614,7 +614,7 @@ h1, h2, h3, h4 {
 
 .marquee {
   border-block: 1px solid var(--border);
-  background: var(--bg-2);
+  background: #ffffff;
   overflow: hidden;
   padding: 18px 0;
 }
@@ -665,7 +665,7 @@ h1, h2, h3, h4 {
 .card:hover {
   transform: translateY(-6px);
   border-color: var(--border-strong);
-  background: var(--card-2);
+  background: #ffffff;
 }
 
 .card-icon {
@@ -783,8 +783,8 @@ h1, h2, h3, h4 {
   padding: 64px 56px;
   overflow: hidden;
   background:
-    radial-gradient(600px 300px at 80% 20%, rgba(240, 90, 39, 0.22), transparent 60%),
-    linear-gradient(140deg, #1a242f, #10161d);
+    radial-gradient(600px 300px at 80% 20%, rgba(240, 90, 39, 0.16), transparent 60%),
+    linear-gradient(140deg, #ffffff, #fff4ee);
   border: 1px solid var(--border-strong);
   text-align: center;
 }
@@ -856,7 +856,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 14px;
-  color: #0a0e13;
+  color: #ffffff;
 }
 
 .testimonial .who b {
@@ -1104,7 +1104,7 @@ h1, h2, h3, h4 {
 }
 
 .pricing-table tbody tr:hover {
-  background: var(--bg-2);
+  background: #ffffff;
 }
 
 /* ---------- gallery ---------- */
@@ -1175,7 +1175,7 @@ h1, h2, h3, h4 {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(5, 8, 12, 0.94);
+  background: rgba(250, 251, 252, 0.96);
   backdrop-filter: blur(8px);
   display: none;
   align-items: center;
@@ -1341,7 +1341,7 @@ h1, h2, h3, h4 {
 .field select,
 .field textarea {
   width: 100%;
-  background: var(--bg-2);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 13px 16px;
@@ -1365,7 +1365,7 @@ h1, h2, h3, h4 {
 }
 
 .field select option {
-  background: var(--bg-2);
+  background: #ffffff;
 }
 
 #contactForm.was-validated input:invalid,
@@ -1386,7 +1386,7 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   border: 0;
-  filter: grayscale(1) invert(0.92) contrast(0.9);
+  filter: grayscale(1) contrast(0.95);
 }
 
 .hours-list {
@@ -1398,7 +1398,7 @@ h1, h2, h3, h4 {
   display: flex;
   justify-content: space-between;
   padding: 12px 16px;
-  background: var(--bg-2);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 14.5px;
@@ -1428,7 +1428,7 @@ h1, h2, h3, h4 {
   left: 50%;
   transform: translate(-50%, 130%);
   z-index: 300;
-  background: var(--card-2);
+  background: #ffffff;
   border: 1px solid var(--border-strong);
   color: var(--text);
   padding: 16px 26px;
@@ -1467,7 +1467,7 @@ h1, h2, h3, h4 {
 
 .footer {
   border-top: 1px solid var(--border);
-  background: var(--bg-2);
+  background: #ffffff;
   margin-top: 40px;
 }
 
@@ -1604,7 +1604,7 @@ h1, h2, h3, h4 {
     flex-direction: column;
     align-items: stretch;
     gap: 4px;
-    background: rgba(10, 14, 19, 0.97);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
     padding: 18px 5%;
