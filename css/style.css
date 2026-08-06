@@ -8,12 +8,12 @@
   --card: #131a23;
   --card-2: #17202b;
   --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 184, 0, 0.35);
+  --border-strong: rgba(240, 90, 39, 0.4);
   --text: #e9eef4;
   --muted: #96a3b1;
-  --accent: #ffb800;
-  --accent-soft: rgba(255, 184, 0, 0.12);
-  --accent-2: #ffd66b;
+  --accent: #f05a27;
+  --accent-soft: rgba(240, 90, 39, 0.13);
+  --accent-2: #ffb08a;
   --green: #37d67a;
   --danger: #ff5c5c;
   --radius: 16px;
@@ -91,8 +91,8 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(900px 500px at 85% -5%, rgba(255, 184, 0, 0.09), transparent 60%),
-    radial-gradient(700px 500px at -10% 30%, rgba(255, 184, 0, 0.05), transparent 60%),
+    radial-gradient(900px 500px at 85% -5%, rgba(240, 90, 39, 0.09), transparent 60%),
+    radial-gradient(700px 500px at -10% 30%, rgba(240, 90, 39, 0.05), transparent 60%),
     var(--bg);
 }
 
@@ -217,10 +217,10 @@ h1, h2, h3, h4 {
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent), #ff8a00);
+  background: linear-gradient(135deg, var(--accent), #ff8a3d);
   display: grid;
   place-items: center;
-  box-shadow: 0 6px 18px rgba(255, 184, 0, 0.35);
+  box-shadow: 0 6px 18px rgba(240, 90, 39, 0.35);
 }
 
 .logo-mark svg {
@@ -346,14 +346,14 @@ h1, h2, h3, h4 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent), #ff9d00);
+  background: linear-gradient(135deg, var(--accent), #ff8a3d);
   color: #0a0e13;
-  box-shadow: 0 8px 24px rgba(255, 184, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(240, 90, 39, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 184, 0, 0.42);
+  box-shadow: 0 12px 30px rgba(240, 90, 39, 0.42);
 }
 
 .btn-ghost {
@@ -447,7 +447,7 @@ h1, h2, h3, h4 {
   right: 0;
   bottom: 6px;
   height: 10px;
-  background: linear-gradient(90deg, transparent, rgba(255, 184, 0, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(240, 90, 39, 0.35), transparent);
   border-radius: 6px;
   z-index: -1;
 }
@@ -504,7 +504,7 @@ h1, h2, h3, h4 {
   border-radius: 24px;
   padding: 40px 36px;
   background:
-    linear-gradient(160deg, rgba(255, 184, 0, 0.12), transparent 45%),
+    linear-gradient(160deg, rgba(240, 90, 39, 0.12), transparent 45%),
     var(--card);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
@@ -515,7 +515,7 @@ h1, h2, h3, h4 {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 20% 30%, rgba(255, 184, 0, 0.18), transparent 55%);
+  background-image: radial-gradient(circle at 20% 30%, rgba(240, 90, 39, 0.18), transparent 55%);
   pointer-events: none;
 }
 
@@ -783,7 +783,7 @@ h1, h2, h3, h4 {
   padding: 64px 56px;
   overflow: hidden;
   background:
-    radial-gradient(600px 300px at 80% 20%, rgba(255, 184, 0, 0.22), transparent 60%),
+    radial-gradient(600px 300px at 80% 20%, rgba(240, 90, 39, 0.22), transparent 60%),
     linear-gradient(140deg, #1a242f, #10161d);
   border: 1px solid var(--border-strong);
   text-align: center;
@@ -793,7 +793,7 @@ h1, h2, h3, h4 {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 30% 70%, rgba(255, 184, 0, 0.14), transparent 55%);
+  background-image: radial-gradient(circle at 30% 70%, rgba(240, 90, 39, 0.14), transparent 55%);
 }
 
 .cta-band > * {
@@ -850,7 +850,7 @@ h1, h2, h3, h4 {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), #ff8a00);
+  background: linear-gradient(135deg, var(--accent), #ff8a3d);
   display: grid;
   place-items: center;
   font-family: var(--font-display);
@@ -875,7 +875,7 @@ h1, h2, h3, h4 {
   padding: calc(var(--header-h) + 60px) 0 56px;
   border-bottom: 1px solid var(--border);
   background:
-    radial-gradient(700px 320px at 70% 0%, rgba(255, 184, 0, 0.08), transparent 60%),
+    radial-gradient(700px 320px at 70% 0%, rgba(240, 90, 39, 0.08), transparent 60%),
     var(--bg-2);
 }
 
@@ -1019,7 +1019,7 @@ h1, h2, h3, h4 {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(300px 200px at 100% 0%, rgba(255, 184, 0, 0.12), transparent 60%);
+  background: radial-gradient(300px 200px at 100% 0%, rgba(240, 90, 39, 0.12), transparent 60%);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
@@ -1361,7 +1361,7 @@ h1, h2, h3, h4 {
 .field select:focus,
 .field textarea:focus {
   border-color: var(--border-strong);
-  box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.12);
+  box-shadow: 0 0 0 3px rgba(240, 90, 39, 0.12);
 }
 
 .field select option {
