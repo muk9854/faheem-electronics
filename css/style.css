@@ -213,6 +213,13 @@ h1, h2, h3, h4 {
   letter-spacing: 0.02em;
 }
 
+.logo img {
+  display: block;
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
 .logo-mark {
   width: 42px;
   height: 42px;
