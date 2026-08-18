@@ -198,3 +198,99 @@
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 })();
+
+(function () {
+  "use strict";
+
+  const banner = document.querySelector(".eco-banner");
+  if (!banner) return;
+
+  const track = banner.querySelector(".eco-banner__track");
+  const dotsWrap = banner.querySelector(".eco-banner__dots");
+  const prevBtn = banner.querySelector(".eco-banner__arrow--prev");
+  const nextBtn = banner.querySelector(".eco-banner__arrow--next");
+  const slides = Array.prototype.slice.call(banner.querySelectorAll(".eco-slide"));
+
+  if (!track || !dotsWrap || !prevBtn || !nextBtn || slides.length < 2) return;
+
+  const AUTOPLAY_MS = 5000;
+  const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let index = 0;
+  let timer = null;
+  let touchX = 0;
+
+  function render() {
+    track.style.transform = "translateX(-" + index * 100 + "%)";
+    slides.forEach(function (slide, i) {
+      const active = i === index;
+      slide.classList.toggle("is-active", active);
+      slide.setAttribute("aria-hidden", active ? "false" : "true");
+      slide.querySelectorAll("a").forEach(function (link) {
+        if (active) link.removeAttribute("tabindex");
+        else link.setAttribute("tabindex", "-1");
+      });
+    });
+    Array.prototype.forEach.call(dotsWrap.children, function (dot, i) {
+      dot.classList.toggle("is-active", i === index);
+      if (i === index) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+  }
+
+  function go(next) {
+    index = (next + slides.length) % slides.length;
+    render();
+  }
+
+  function start() {
+    if (REDUCED.matches) return;
+    stop();
+    timer = setInterval(function () {
+      go(index + 1);
+    }, AUTOPLAY_MS);
+  }
+
+  function stop() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  slides.forEach(function (_, i) {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+    dot.addEventListener("click", function () {
+      go(i);
+    });
+    dotsWrap.appendChild(dot);
+  });
+
+  prevBtn.addEventListener("click", function () {
+    go(index - 1);
+  });
+
+  nextBtn.addEventListener("click", function () {
+    go(index + 1);
+  });
+
+  banner.addEventListener("mouseenter", stop);
+  banner.addEventListener("mouseleave", start);
+  banner.addEventListener("focusin", stop);
+  banner.addEventListener("focusout", start);
+
+  banner.addEventListener("touchstart", function (e) {
+    stop();
+    touchX = e.touches[0].clientX;
+  }, { passive: true });
+
+  banner.addEventListener("touchend", function (e) {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+    start();
+  }, { passive: true });
+
+  render();
+  start();
+})();
