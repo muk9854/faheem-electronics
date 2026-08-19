@@ -168,24 +168,38 @@
 
       const data = new FormData(form);
       const name = (data.get("name") || "").toString().trim();
-      const body =
-        "Name: " + name + "\n" +
-        "Phone: " + data.get("phone") + "\n" +
-        "Email: " + (data.get("email") || "-") + "\n" +
-        "Service: " + (data.get("service") || "Not specified") + "\n\n" +
-        "Problem: " + data.get("message");
-      const mailto =
-        "mailto:info@faheemelectronics.pk" +
-        "?subject=" + encodeURIComponent("Service Request — " + name) +
-        "&body=" + encodeURIComponent(body);
+      const payload = {
+        name: name,
+        phone: data.get("phone"),
+        email: data.get("email") || "-",
+        service: data.get("service") || "Not specified",
+        message: data.get("message"),
+        _subject: "Service Request - " + name + " (Website Survey Form)"
+      };
 
-      form.reset();
-      form.classList.remove("was-validated");
-      fields.forEach(function (field) {
-        field.removeAttribute("aria-invalid");
-      });
-      showToast("Thank you! Opening your email app to send the message\u2026", true);
-      window.location.href = mailto;
+      fetch("https://formsubmit.co/ajax/info@faheemelectronics.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("formsubmit request failed");
+          return res.json();
+        })
+        .then(function () {
+          form.reset();
+          form.classList.remove("was-validated");
+          fields.forEach(function (field) {
+            field.removeAttribute("aria-invalid");
+          });
+          showToast("Thank you! Your request has been emailed to info@faheemelectronics.com.", true);
+        })
+        .catch(function () {
+          showToast("Message could not be sent. Please call us at 0343-2525898.", false);
+        });
     });
 
     form.addEventListener("input", function (e) {
