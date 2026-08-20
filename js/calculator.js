@@ -18,13 +18,13 @@
   ];
 
   var TIERS = [
-    { max: 300, name: "EcoFlow RIVER 3", img: "images/products/ecoflow-river-3-portable-power-station.jpg", spec: "300W output · 245Wh LiFePO4 · X-Boost up to 600W", wh: 245, price: "PKR 60,000" },
-    { max: 600, name: "EcoFlow RIVER 3 Max Plus", img: "images/products/ecoflow-river-3-max-plus-portable-power-station.jpg", spec: "600W output · 858Wh expandable · X-Boost up to 1200W", wh: 858, price: "PKR 120,000" },
-    { max: 1000, name: "EcoFlow DELTA 3 2000 Air", img: "images/products/ecoflow-delta-3-air-2000-portable-power-station.png", spec: "1000W output · 1920Wh LiFePO4", wh: 1920, price: "PKR 205,000" },
-    { max: 1800, name: "EcoFlow DELTA 3", img: "images/products/ecoflow-delta-3-portable-power-station.png", spec: "1800W output · 1024Wh LiFePO4 · X-Stream fast charging", wh: 1024, price: "PKR 165,000" },
-    { max: 2400, name: "EcoFlow DELTA 3 Max", img: "images/products/ecoflow-delta-3-max.webp", spec: "2400W output · 2048Wh LFP · X-Boost up to 3400W", wh: 2048, price: "PKR 250,000" },
-    { max: 3600, name: "EcoFlow DELTA 3 Ultra", img: "images/products/ecoflow-delta-3-ultra-series-portable-power-station.webp", spec: "3600W output · 3072Wh LiFePO4 · surge 7200W", wh: 3072, price: "PKR 400,000" },
-    { max: 4000, name: "EcoFlow DELTA Pro 3", img: "images/products/ecoflow-delta-pro-3-portable-power-station.jpg", spec: "4000W output · 4096Wh LFP · expandable up to 12kWh", wh: 4096, price: "PKR 800,000" }
+    { max: 300, name: "EcoFlow RIVER 3", img: "images/products/ecoflow-river-3-portable-power-station.jpg", spec: "300W output \u00b7 245Wh LiFePO4 \u00b7 X-Boost up to 600W", wh: 245, price: "PKR 60,000", alt: "Budget alternative: RIVER 2 (300W, 256Wh) \u2014 PKR 63,000" },
+    { max: 600, name: "EcoFlow RIVER 3 Max Plus", img: "images/products/ecoflow-river-3-max-plus-portable-power-station.jpg", spec: "600W output \u00b7 858Wh expandable \u00b7 X-Boost up to 1200W", wh: 858, price: "PKR 120,000", alt: "" },
+    { max: 1000, name: "EcoFlow DELTA 3 2000 Air", img: "images/products/ecoflow-delta-3-air-2000-portable-power-station.png", spec: "1000W output \u00b7 1920Wh LiFePO4", wh: 1920, price: "PKR 205,000", alt: "Budget alternative: DELTA 3 1000 Air (500W, 960Wh) \u2014 PKR 125,000" },
+    { max: 1800, name: "EcoFlow DELTA 3 Classic", img: "images/products/ecoflow-delta-3-classic-portable-power-station.webp", spec: "1800W output \u00b7 1024Wh LiFePO4 \u00b7 X-Stream fast charging", wh: 1024, price: "PKR 160,000", alt: "Alternative: DELTA 3 (1800W, 1024Wh) \u2014 PKR 165,000" },
+    { max: 2400, name: "EcoFlow DELTA 3 Max", img: "images/products/ecoflow-delta-3-max.webp", spec: "2400W output \u00b7 2048Wh LFP \u00b7 X-Boost up to 3400W", wh: 2048, price: "PKR 250,000", alt: "" },
+    { max: 3600, name: "EcoFlow DELTA 3 Ultra", img: "images/products/ecoflow-delta-3-ultra-series-portable-power-station.webp", spec: "3600W output \u00b7 3072Wh LiFePO4 \u00b7 surge 7200W", wh: 3072, price: "PKR 400,000", alt: "" },
+    { max: 4000, name: "EcoFlow DELTA Pro 3", img: "images/products/ecoflow-delta-pro-3-portable-power-station.jpg", spec: "4000W output \u00b7 4096Wh LFP \u00b7 expandable up to 12kWh", wh: 4096, price: "PKR 800,000", alt: "" }
   ];
 
   var grid = document.getElementById("calcGrid");
@@ -37,8 +37,10 @@
   var resultImg = document.getElementById("resultImg");
   var resultName = document.getElementById("resultName");
   var resultSpec = document.getElementById("resultSpec");
+  var resultAlt = document.getElementById("resultAlt");
   var resultRuntime = document.getElementById("resultRuntime");
   var resultPrice = document.getElementById("resultPrice");
+  var solutionBtn = document.getElementById("solutionBtn");
 
   var rows = [];
 
@@ -133,6 +135,7 @@
       resultImg.alt = tier.name + " at Faheem Electronics";
       resultName.textContent = tier.name;
       resultSpec.textContent = tier.spec;
+      resultAlt.textContent = tier.alt || "";
       resultRuntime.textContent = runtimeText(tier.wh, total);
       resultPrice.textContent = tier.price;
     } else {
@@ -140,9 +143,18 @@
       resultImg.alt = "Custom EcoFlow system";
       resultName.textContent = "Custom EcoFlow System";
       resultSpec.textContent = "Your load is above 4kW \u2014 a single EcoFlow unit may not be enough. Let our engineers design a custom system for you.";
+      resultAlt.textContent = "";
       resultRuntime.textContent = "";
       resultPrice.textContent = "";
     }
+  }
+
+  if (solutionBtn) {
+    solutionBtn.addEventListener("click", function () {
+      var target = document.getElementById("calcResult");
+      if (!target || target.hidden) target = document.getElementById("calcGrid");
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   }
 
   recalc();

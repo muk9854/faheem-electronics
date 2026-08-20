@@ -1772,6 +1772,12 @@ h1, h2, h3, h4 {
   color: var(--text) !important;
 }
 
+.calc-result__alt {
+  font-weight: 700;
+  color: var(--accent) !important;
+  font-size: 13.5px !important;
+}
+
 .calc-result__actions {
   display: flex;
   gap: 12px;
