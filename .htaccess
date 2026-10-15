@@ -1,0 +1,24 @@
+# ============================================
+#  www ko bina-www par redirect (SEO)
+#  Google ko ek hi version mile, ranking bante na
+# ============================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# HTML hamesha fresh load ho (koi cache nahi)
+<FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+</FilesMatch>
+
+# CSS/JS sirf 1 ghanta cache ho
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+</FilesMatch>
+
+# Images 30 din cache ho
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
