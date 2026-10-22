@@ -90,12 +90,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- calculator.html abhi live par nahi hai. Live hote hi ye block uncomment karein:
   <url>
     <loc>https://faheemelectronics.com/calculator.html</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  -->
 </urlset>

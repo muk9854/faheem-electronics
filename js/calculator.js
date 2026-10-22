@@ -1,31 +1,71 @@
 (function () {
   "use strict";
 
+  /* Appliance ke saath startup multiplier.
+     Motor/compressor wali cheezein chalte waqt se kahin zyada kheenchti hain. */
   var APPLIANCES = [
-    { key: "fan", name: "Fan", types: [["AC Fan", 80], ["DC Fan", 35], ["Exhaust Fan", 40]] },
-    { key: "tubelight", name: "Tubelight", types: [["36W", 36], ["40W", 40], ["60W", 60]] },
-    { key: "bulb", name: "LED Bulb", types: [["5W", 5], ["7W", 7], ["12W", 12], ["15W", 15], ["18W", 18]] },
-    { key: "tv", name: "LED TV", types: [["32 inch", 60], ["42 inch", 100], ["55 inch", 150], ["65 inch", 200]] },
-    { key: "fridge", name: "Refrigerator", types: [["Inverter", 150], ["Normal", 250]] },
-    { key: "washer", name: "Washing Machine", types: [["Inverter", 300], ["Normal", 500]] },
-    { key: "iron", name: "Iron", types: [["Plastic Body", 800], ["Metal Body", 1000]] },
-    { key: "splitac", name: "Split AC", types: [["1.0 Ton", 1500], ["1.5 Ton", 2000], ["2.0 Ton", 2400]] },
-    { key: "invac", name: "Inverter AC", types: [["1.0 Ton", 800], ["1.5 Ton", 1200], ["2.0 Ton", 1600]] },
-    { key: "pump", name: "Water Pump", types: [["0.5 HP", 400], ["1.0 HP", 750], ["1.5 HP", 1100], ["2.0 HP", 1500]] },
-    { key: "microwave", name: "Microwave", types: [["Standard", 1200]] },
-    { key: "computer", name: "Computer", types: [["Desktop PC", 200]] },
-    { key: "laptop", name: "Laptop", types: [["Standard", 65]] }
+    { key: "fan", name: "Fan", types: [["AC Fan", 80, 1.5], ["DC Fan", 35, 1], ["Exhaust Fan", 40, 1.5]] },
+    { key: "tubelight", name: "Tubelight", types: [["36W", 36, 1], ["40W", 40, 1], ["60W", 60, 1]] },
+    { key: "bulb", name: "LED Bulb", types: [["5W", 5, 1], ["7W", 7, 1], ["12W", 12, 1], ["15W", 15, 1], ["18W", 18, 1]] },
+    { key: "tv", name: "LED TV", types: [["32 inch", 60, 1], ["42 inch", 100, 1], ["55 inch", 150, 1], ["65 inch", 200, 1]] },
+    { key: "fridge", name: "Refrigerator", types: [["Inverter", 150, 1.5], ["Normal", 250, 3]] },
+    { key: "washer", name: "Washing Machine", types: [["Inverter", 300, 1.5], ["Normal", 500, 3]] },
+    { key: "iron", name: "Iron", types: [["Plastic Body", 800, 1], ["Metal Body", 1000, 1]] },
+    { key: "splitac", name: "Split AC", types: [["1.0 Ton", 1500, 3], ["1.5 Ton", 2000, 3], ["2.0 Ton", 2400, 3]] },
+    { key: "invac", name: "Inverter AC", types: [["1.0 Ton", 800, 1.5], ["1.5 Ton", 1200, 1.5], ["2.0 Ton", 1600, 1.5]] },
+    { key: "pump", name: "Water Pump", types: [["0.5 HP", 400, 3], ["1.0 HP", 750, 3], ["1.5 HP", 1100, 3], ["2.0 HP", 1500, 3]] },
+    { key: "microwave", name: "Microwave", types: [["Standard", 1200, 1.5]] },
+    { key: "computer", name: "Computer", types: [["Desktop PC", 200, 1]] },
+    { key: "laptop", name: "Laptop", types: [["Standard", 65, 1]] }
   ];
 
-  var TIERS = [
-    { max: 300, name: "EcoFlow RIVER 3", img: "images/products/ecoflow-river-3-portable-power-station.webp", spec: "300W output \u00b7 245Wh LiFePO4 \u00b7 X-Boost up to 600W", wh: 245, price: "PKR 60,000", alt: "Budget alternative: RIVER 2 (300W, 256Wh) \u2014 PKR 63,000" },
-    { max: 600, name: "EcoFlow RIVER 3 Max Plus", img: "images/products/ecoflow-river-3-max-plus-portable-power-station.webp", spec: "600W output \u00b7 858Wh expandable \u00b7 X-Boost up to 1200W", wh: 858, price: "PKR 120,000", alt: "" },
-    { max: 1000, name: "EcoFlow DELTA 3 2000 Air", img: "images/products/ecoflow-delta-3-air-2000-portable-power-station.webp", spec: "1000W output \u00b7 1920Wh LiFePO4", wh: 1920, price: "PKR 205,000", alt: "Budget alternative: DELTA 3 1000 Air (500W, 960Wh) \u2014 PKR 125,000" },
-    { max: 1800, name: "EcoFlow DELTA 3 Classic", img: "images/products/ecoflow-delta-3-classic-portable-power-station.webp", spec: "1800W output \u00b7 1024Wh LiFePO4 \u00b7 X-Stream fast charging", wh: 1024, price: "PKR 160,000", alt: "Alternative: DELTA 3 (1800W, 1024Wh) \u2014 PKR 170,000" },
-    { max: 2400, name: "EcoFlow DELTA 3 Max", img: "images/products/ecoflow-delta-3-max.webp", spec: "2400W output \u00b7 2048Wh LFP \u00b7 X-Boost up to 3400W", wh: 2048, price: "PKR 250,000", alt: "" },
-    { max: 3600, name: "EcoFlow DELTA 3 Ultra", img: "images/products/ecoflow-delta-3-ultra-series-portable-power-station.webp", spec: "3600W output \u00b7 3072Wh LiFePO4 \u00b7 surge 7200W", wh: 3072, price: "PKR 400,000", alt: "" },
-    { max: 4000, name: "EcoFlow DELTA Pro 3", img: "images/products/ecoflow-delta-pro-3-portable-power-station.webp", spec: "4000W output \u00b7 4096Wh LFP \u00b7 expandable up to 12kWh", wh: 4096, price: "PKR 800,000", alt: "" }
+  /* Products — rated, surge aur price sab products page se.
+     surge sirf wahan barha hua hai jahan page par likha hai (X-Boost ya surge).
+     Jahan kuch nahi likha, surge = rated — koi number andaze se nahi dala. */
+  var PRODUCTS = [
+    { name: "EcoFlow RIVER 3", rated: 300, surge: 600, wh: 245,
+      spec: "300W output · 245Wh LiFePO4 · X-Boost up to 600W",
+      price: "PKR 60,000", img: "images/products/ecoflow-river-3-portable-power-station.webp",
+      url: "ecoflow-river-3-karachi.html" },
+    { name: "EcoFlow RIVER 2", rated: 300, surge: 600, wh: 256,
+      spec: "300W output · 256Wh LFP · surge 600W",
+      price: "PKR 63,000", img: "images/products/ecoflow-river-2-portable-power-station.webp",
+      url: "ecoflow-river-2-karachi.html" },
+    { name: "EcoFlow DELTA 3 1000 Air", rated: 500, surge: 800, wh: 960,
+      spec: "500W output · 960Wh LiFePO4 · X-Boost 800W",
+      price: "PKR 125,000", img: "images/products/ecoflow-delta-3-1000-air-portable-power-station.webp",
+      url: "ecoflow-delta-3-1000-air-karachi.html" },
+    { name: "EcoFlow RIVER 3 Max Plus", rated: 600, surge: 1200, wh: 858,
+      spec: "600W output · 858Wh expandable · X-Boost up to 1200W",
+      price: "PKR 120,000", img: "images/products/ecoflow-river-3-max-plus-portable-power-station.webp",
+      url: "ecoflow-river-3-max-plus-karachi.html" },
+    { name: "EcoFlow DELTA 3 Air 2000", rated: 1000, surge: 1000, wh: 1920,
+      spec: "1000W output · 1920Wh LiFePO4",
+      price: "PKR 205,000", img: "images/products/ecoflow-delta-3-air-2000-portable-power-station.webp",
+      url: "ecoflow-delta-3-air-2000-karachi.html" },
+    { name: "EcoFlow DELTA 3 Classic", rated: 1800, surge: 1800, wh: 1024,
+      spec: "1800W output · 1024Wh LiFePO4 · X-Stream fast charging",
+      price: "PKR 160,000", img: "images/products/ecoflow-delta-3-classic-portable-power-station.webp",
+      url: "ecoflow-delta-3-classic-karachi.html" },
+    { name: "EcoFlow DELTA 3", rated: 1800, surge: 1800, wh: 1024,
+      spec: "1800W output · 1024Wh LiFePO4 · X-Stream fast charging",
+      price: "PKR 170,000", img: "images/products/ecoflow-delta-3-portable-power-station.webp",
+      url: "ecoflow-delta-3-karachi.html" },
+    { name: "EcoFlow DELTA 3 Max", rated: 2400, surge: 3400, wh: 2048,
+      spec: "2400W output · 2048Wh LFP · X-Boost up to 3400W",
+      price: "PKR 250,000", img: "images/products/ecoflow-delta-3-max.webp",
+      url: "ecoflow-delta-3-max-karachi.html" },
+    { name: "EcoFlow DELTA 3 Ultra", rated: 3600, surge: 7200, wh: 3072,
+      spec: "3600W output · 3072Wh LiFePO4 · surge 7200W",
+      price: "PKR 400,000", img: "images/products/ecoflow-delta-3-ultra-series-portable-power-station.webp",
+      url: "ecoflow-delta-3-ultra-karachi.html" },
+    { name: "EcoFlow DELTA Pro 3", rated: 4000, surge: 8000, wh: 4096,
+      spec: "4000W output · 4096Wh LFP · expandable up to 12kWh",
+      price: "PKR 800,000", img: "images/products/ecoflow-delta-pro-3-portable-power-station.webp",
+      url: "ecoflow-delta-pro-3-karachi.html" }
   ];
+
+  var BIGGEST = PRODUCTS[PRODUCTS.length - 1];
 
   var grid = document.getElementById("calcGrid");
   var totalWattsEl = document.getElementById("totalWatts");
@@ -40,13 +80,13 @@
   var resultAlt = document.getElementById("resultAlt");
   var resultRuntime = document.getElementById("resultRuntime");
   var resultPrice = document.getElementById("resultPrice");
+  var resultLink = document.getElementById("resultLink");
+  var surgeNote = document.getElementById("surgeNote");
   var solutionBtn = document.getElementById("solutionBtn");
 
   var rows = [];
 
-  function formatWatts(n) {
-    return n.toLocaleString("en-US");
-  }
+  function fmt(n) { return n.toLocaleString("en-US"); }
 
   function buildRow(app) {
     var row = document.createElement("div");
@@ -59,9 +99,9 @@
     var select = document.createElement("select");
     select.className = "calc-row__type";
     select.setAttribute("aria-label", app.name + " type");
-    app.types.forEach(function (t) {
+    app.types.forEach(function (t, i) {
       var opt = document.createElement("option");
-      opt.value = t[1];
+      opt.value = String(i);
       opt.textContent = t[0] + " (" + t[1] + "W)";
       select.appendChild(opt);
     });
@@ -93,19 +133,32 @@
 
   APPLIANCES.forEach(buildRow);
 
-  function recalc() {
-    var total = 0;
+  /* Running total, aur peak = running + sab se bara single startup jhatka.
+     Sab cheezein ek saath start nahi hotin, isliye sirf sab se bara extra jorte hain. */
+  function tally() {
+    var running = 0, biggestKick = 0, kickFrom = "";
     rows.forEach(function (r) {
-      var w = parseInt(r.select.value, 10) || 0;
+      var t = r.app.types[parseInt(r.select.value, 10) || 0];
+      var w = t[1], mult = t[2];
       var q = parseInt(r.qty.value, 10) || 0;
       if (q < 0) q = 0;
       var rowTotal = w * q;
-      r.total.textContent = formatWatts(rowTotal) + " W";
-      total += rowTotal;
+      r.total.textContent = fmt(rowTotal) + " W";
+      running += rowTotal;
+      if (q > 0) {
+        var kick = w * mult - w;
+        if (kick > biggestKick) { biggestKick = kick; kickFrom = r.app.name + " (" + t[0] + ")"; }
+      }
     });
-    totalWattsEl.textContent = formatWatts(total);
-    totalKwEl.textContent = "(" + (total / 1000).toFixed(2) + " kW)";
-    renderResult(total);
+    return { running: running, peak: Math.round(running + biggestKick),
+             kick: Math.round(biggestKick), kickFrom: kickFrom };
+  }
+
+  function recalc() {
+    var t = tally();
+    totalWattsEl.textContent = fmt(t.running);
+    totalKwEl.textContent = "(" + (t.running / 1000).toFixed(2) + " kW)";
+    render(t);
   }
 
   function runtimeText(wh, watts) {
@@ -116,36 +169,68 @@
     return "Est. runtime at this load: about " + h + " hr " + m + " min";
   }
 
-  function renderResult(total) {
-    if (total <= 0) {
+  function rupees(p) { return parseInt(p.price.replace(/[^0-9]/g, ""), 10); }
+
+  /* Jo products running aur startup dono utha lein, un mein se sab se sasta.
+     Agar koi aur bhi fit hota ho jiski battery kaafi bari ho, usey upgrade ke tor par dikhate hain. */
+  function pick(t) {
+    var fit = PRODUCTS.filter(function (p) {
+      return p.rated >= t.running && p.surge >= t.peak;
+    });
+    if (!fit.length) return null;
+    fit.sort(function (a, b) { return rupees(a) - rupees(b); });
+    var best = fit[0];
+    var upgrade = null;
+    for (var i = 1; i < fit.length; i++) {
+      if (fit[i].wh >= best.wh * 1.5) { upgrade = fit[i]; break; }
+    }
+    return { best: best, upgrade: upgrade };
+  }
+
+  function render(t) {
+    if (t.running <= 0) {
       result.hidden = true;
       empty.hidden = false;
+      if (surgeNote) surgeNote.hidden = true;
       return;
     }
     empty.hidden = true;
     result.hidden = false;
 
-    var tier = null;
-    for (var i = 0; i < TIERS.length; i++) {
-      if (total <= TIERS[i].max) { tier = TIERS[i]; break; }
+    if (surgeNote) {
+      surgeNote.hidden = false;
+      surgeNote.innerHTML = t.kick > 0
+        ? "Running load <strong>" + fmt(t.running) + " W</strong>, but starting load peaks at about <strong>"
+          + fmt(t.peak) + " W</strong> &mdash; " + t.kickFrom + " draws roughly " + fmt(t.kick)
+          + " W extra the moment it kicks in. Sizing below allows for that."
+        : "Running load <strong>" + fmt(t.running) + " W</strong>. None of these appliances has a motor or compressor, so there is no significant starting surge.";
     }
 
-    if (tier) {
-      resultImg.src = tier.img;
-      resultImg.alt = tier.name + " at Faheem Electronics";
-      resultName.textContent = tier.name;
-      resultSpec.textContent = tier.spec;
-      resultAlt.textContent = tier.alt || "";
-      resultRuntime.textContent = runtimeText(tier.wh, total);
-      resultPrice.textContent = tier.price;
+    var sel = pick(t);
+    var p = sel && sel.best;
+
+    if (p) {
+      resultImg.src = p.img;
+      resultImg.alt = p.name + " at Faheem Electronics";
+      resultName.textContent = p.name;
+      resultSpec.textContent = p.spec;
+      resultAlt.textContent = sel.upgrade
+        ? "Longer backup: " + sel.upgrade.name.replace("EcoFlow ", "") + " (" + fmt(sel.upgrade.wh)
+          + "Wh vs " + fmt(p.wh) + "Wh) \u2014 " + sel.upgrade.price
+        : "";
+      resultRuntime.textContent = runtimeText(p.wh, t.running);
+      resultPrice.textContent = p.price;
+      if (resultLink) { resultLink.href = p.url; resultLink.textContent = "View " + p.name.replace("EcoFlow ", "") + " →"; resultLink.hidden = false; }
     } else {
-      resultImg.src = "images/products/ecoflow-delta-pro-3-portable-power-station.webp";
-      resultImg.alt = "Custom EcoFlow system";
-      resultName.textContent = "Custom EcoFlow System";
-      resultSpec.textContent = "Your load is above 4kW \u2014 a single EcoFlow unit may not be enough. Let our engineers design a custom system for you.";
-      resultAlt.textContent = "";
+      resultImg.src = BIGGEST.img;
+      resultImg.alt = "Custom EcoFlow system from Faheem Electronics";
+      resultName.textContent = "More Than One Unit";
+      resultSpec.textContent = "Your load needs about " + fmt(t.peak) + " W at startup, which is beyond a single "
+        + BIGGEST.name.replace("EcoFlow ", "") + " (" + fmt(BIGGEST.rated) + " W). We will design a multi-unit system for you.";
+      resultAlt.textContent = "Largest single unit: " + BIGGEST.name.replace("EcoFlow ", "") + " — " + BIGGEST.price;
       resultRuntime.textContent = "";
       resultPrice.textContent = "";
+      if (resultLink) { resultLink.href = BIGGEST.url; resultLink.textContent = "View " + BIGGEST.name.replace("EcoFlow ", "") + " →"; resultLink.hidden = false; }
     }
   }
 
