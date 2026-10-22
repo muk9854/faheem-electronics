@@ -161,12 +161,13 @@
     render(t);
   }
 
+  /* Worst case: sab kuch ek saath aur musalsal. Asal backup aam tor par is se zyada hota hai. */
   function runtimeText(wh, watts) {
     var hours = (wh * 0.85) / watts;
     var h = Math.floor(hours);
     var m = Math.round((hours - h) * 60);
-    if (h <= 0) return "Est. runtime at this load: about " + m + " minutes";
-    return "Est. runtime at this load: about " + h + " hr " + m + " min";
+    var len = h <= 0 ? m + " minutes" : h + " hr " + m + " min";
+    return "Everything running at once: about " + len;
   }
 
   function rupees(p) { return parseInt(p.price.replace(/[^0-9]/g, ""), 10); }
